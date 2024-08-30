@@ -1,6 +1,6 @@
 
 # Arrow
- Arrow is React-based e-commerce website where users can buy products, ask and answer questions, find related products, and leave reviews.
+ Arrow is React-based e-commerce website where users can buy products, ask questions, find related products, and leave reviews.
  <img src="/src/images/arrow_v3.png" alt="project landing page image" width="600px" />
 
 
