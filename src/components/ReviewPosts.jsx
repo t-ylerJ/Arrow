@@ -1,8 +1,5 @@
-import React, {
-  useState, useContext,
-} from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-
 import AppContext from '../context/AppContext';
 import Helpful from './Helpful';
 import StarRating from './StarRating';
@@ -10,17 +7,14 @@ import missing from '../images/missing.svg?url';
 
 const productID = 40344;
 
-
-
 function ReviewPosts({ review }) {
   const [showChars, setShowChars] = useState(250);
   const {
     dispatch, store: { helpfulReviews },
   } = useContext(AppContext);
-
+  
   const reviewDate = new Date(review.date);
   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
   const markReviewHelpful = async (id) => {
     if (!helpfulReviews.includes(id)) {
       const response = await axios.put(`/reviews/${id}/helpful`);
