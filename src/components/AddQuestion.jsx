@@ -1,8 +1,6 @@
 import React, { useContext, useState, useRef } from 'react';
 import axios from 'axios';
-
 import { IoClose } from 'react-icons/io5';
-
 import AppContext from '../context/AppContext';
 
 function AddQuestion() {
@@ -13,14 +11,14 @@ function AddQuestion() {
   } = useContext(AppContext);
 
   const formRef = useRef();
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setAttempted(true);
-    // console.log(e.target)
+ 
     const data = Object.fromEntries(new FormData(e.target.form));
     data.product_id = parseInt(data.product_id);
-    // console.log(data);
+    
     const response = await axios.post('/qa/questions', data);
     if (response.status === 201) {
       updateQnA();
