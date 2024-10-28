@@ -1,15 +1,11 @@
 import React, { useContext, useLayoutEffect, useState } from 'react';
-
 import { PiShoppingCart } from 'react-icons/pi';
 import { BsMoonStars, BsSun } from 'react-icons/bs';
-
 import Logo from '../images/arrowlogo.svg';
-
 import AppContext from '../context/AppContext';
 
 function Header() {
   const [theme, setTheme] = useState(null);
-
   const { store: { cart } } = useContext(AppContext);
 
   if (!theme) {
