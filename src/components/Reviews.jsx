@@ -1,7 +1,4 @@
-import React, {
-  useState, useEffect, useContext,
-} from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
 import { FaPlus } from 'react-icons/fa6';
 import ReviewSummary from './ReviewSummary';
 import ReviewPosts from './ReviewPosts';
@@ -13,7 +10,6 @@ function Reviews() {
   const [filters, setFilters] = useState([]);
   const [currentView, setCurrentView] = useState([]);
   const [sortMethod, setSortMethod] = useState('relevance');
-
   const {
     store: { reviews }, store: { ratings }, store: { rating }, showModal,
   } = useContext(AppContext);
@@ -22,7 +18,6 @@ function Reviews() {
     const sortedReviews = filters.length === 0
       ? reviews.results
       : reviews.results.filter((review) => filters.includes(review.rating));
-
     if (sortType === 'newest') {
       sortedReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
     } else if (sortType === 'helpfulness') {
