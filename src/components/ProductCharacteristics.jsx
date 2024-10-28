@@ -4,12 +4,10 @@ import AppContext from '../context/AppContext';
 
 export function ProductCharacteristics({ ratings }) {
   const productChars = ratings.characteristics;
-
   const relevantChars = Object.keys(productChars);
   const getFeatureData = (feature) => {
     const featureData = productChars[feature].value;
     const featureAvg = ((featureData) * 20);
-
     const selectionRating = {
       position: 'absolute',
       left: `${featureAvg}%`,
@@ -49,14 +47,11 @@ export function ProductCharacteristics({ ratings }) {
       'Perfect',
     ],
   };
-  //
+
   return (
-
     <section className="flex flex-col h-full w-full pt-4 text-base-content">
-
       <div className="flex flex-row font-bold text-sm justify-between">
-        <p />
-
+        <p/>
       </div>
       <div className="w-full flex flex-col text-base md:gap-4">
         {relevantChars.map((feature, index) => (
@@ -90,7 +85,6 @@ export function ProductCharacteristicsReview() {
   const relevantChars = Object.keys(productChars);
 
   const fullProductFeatures = {
-
     Size: [
       'A size too small',
       '½ a size too small',
@@ -143,7 +137,6 @@ export function ProductCharacteristicsReview() {
           {fullProductFeatures.Size.map((option, index) => (
             <li className="w-full" key={index}>
               <div className="flex items-center gap-2">
-
                 <input className="w-4 h-4 border-gray-300" type="radio" id={`size${index}`} name="size" value={option} />
                 <label htmlFor={`size${index}`} className="py-1 text-sm font-medium">{option}</label>
               </div>
