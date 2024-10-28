@@ -1,12 +1,9 @@
 import React, {
-  useContext, useState, useRef, useEffect, useLayoutEffect,
-} from 'react';
+  useContext, useState, useRef, useEffect, useLayoutEffect } from 'react';
 
 import { FaPlus, FaMagnifyingGlass } from 'react-icons/fa6';
-
 import QnAItem from './QnAItem';
 import AddQuestion from './AddQuestion';
-
 import AppContext from '../context/AppContext';
 
 function QnA() {
@@ -14,26 +11,20 @@ function QnA() {
   const [filter, setFilter] = useState('');
   const [scrolling, setScrolling] = useState(false);
   const [mobile, setMobile] = useState(false);
-
   const questionsRef = useRef(null);
-
   const { store: { questions }, showModal } = useContext(AppContext);
-
   const loading = !questions;
-
+  
   let newerQuestions = [];
   let filteredQuestions = [];
   newerQuestions = !loading ? questions.filter((question) => new Date(question.question_date) > new Date(2024, 5)) : newerQuestions;
   filteredQuestions = filter.length >= 3 ? newerQuestions.filter((question) => question.question_body.toLowerCase().includes(filter.toLowerCase())) : newerQuestions;
   const sortedQuestions = filteredQuestions ? filteredQuestions.sort((a, b) => (a.question_helpfulness >= b.question_helpfulness ? -1 : 1)) : [];
 
-  // console.log(questions);
-
   useEffect(() => {
     if (questionsRef.current && questionsRef.current.scrollHeight > questionsRef.current.clientHeight) {
       setScrolling(true);
     }
-    // console.log('scrolling: ', scrolling, questionsRef.current?.scrollHeight, questionsRef.current?.clientHeight);
   }, [visibleQuestions]);
 
   useLayoutEffect(() => {
@@ -47,7 +38,7 @@ function QnA() {
     checkMobile();
 
     window.addEventListener('resize', checkMobile);
-
+    
     return () => window.removeEventListener('resize', checkMobile);
   }, [mobile]);
 
