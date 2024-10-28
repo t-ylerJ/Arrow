@@ -13,7 +13,7 @@ function Reviews() {
   const {
     store: { reviews }, store: { ratings }, store: { rating }, showModal,
   } = useContext(AppContext);
-
+  
   const handleSortMethod = (sortType) => {
     const sortedReviews = filters.length === 0
       ? reviews.results
@@ -35,16 +35,16 @@ function Reviews() {
     }
     setCurrentView(sortedReviews);
   };
+  
   useEffect(() => {
     if (reviews) {
       handleSortMethod(sortMethod);
     }
   }, [reviews, sortMethod, filters, displayedReviews, currentView]);
-
+  
   const addReviews = () => {
     setDisplayedReviews(displayedReviews + 2);
   };
-
   const hasMoreReviews = reviews ? displayedReviews < reviews.results.length : false;
 
   return (
@@ -86,7 +86,6 @@ function Reviews() {
           </div>
         </div>
       )}
-
       {reviews && ratings && (
         <ReviewSummary
           className="text-base-content"
