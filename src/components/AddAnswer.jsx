@@ -1,18 +1,14 @@
 import React, { useContext, useState, useRef } from 'react';
 import axios from 'axios';
-
 import { IoClose } from 'react-icons/io5';
-
 import AppContext from '../context/AppContext';
 
 function AddAnswer({ question }) {
   const [error, setError] = useState(null);
   const [attempted, setAttempted] = useState(false);
   const [photos, setPhotos] = useState([]);
-
-  const { store: { product }, hideModal, updateQnA } = useContext(AppContext);
-
   const formRef = useRef();
+  const { store: { product }, hideModal, updateQnA } = useContext(AppContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,8 +16,7 @@ function AddAnswer({ question }) {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
     data.photos = formData.getAll('photos');
-    console.log(data);
-    // return;
+
     const response = await axios.post(`/qa/questions/${question.question_id}/answers`, data);
     if (response.status === 201) {
       updateQnA();
