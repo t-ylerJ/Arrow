@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useReducer } from 'react';
-
 import Header from './Header';
 import Overview from './Overview';
 import RelatedProducts from './RelatedProducts';
@@ -9,23 +8,16 @@ import Reviews from './Reviews';
 
 import AppContext from '../context/AppContext';
 import { OutfitProvider } from '../context/OutfitContext';
-
 import appReducer from '../reducers/appReducer';
-
 import {
   getDetails, getStyles, getQuestions, getRating, getRelatedProducts, getReviews,
 } from '../lib/fetchers';
-
 import '../styles/global.css';
-
 import useModal from '../hooks/useModal';
 
 function App() {
   const [productID, setProductID] = useState(40344);
-  // 40344
-
   const { modal, showModal, hideModal } = useModal();
-
   const [store, dispatch] = useReducer(appReducer, {
     selectedImage: 0, selectedStyle: 0, selectedSKU: null, selectedQty: null, cart: JSON.parse(localStorage.getItem('cart')) ?? [], helpfulQs: JSON.parse(localStorage.getItem('helpfulQs')) ?? [], helpfulAs: JSON.parse(localStorage.getItem('helpfulAs')) ?? [], reportedAs: JSON.parse(localStorage.getItem('reportedAs')) ?? [], helpfulReviews: JSON.parse(localStorage.getItem('helpfulReviews')) ?? [],
   });
