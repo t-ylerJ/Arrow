@@ -9,8 +9,6 @@ function ComparisonForm({ defaultProduct }) {
   const [currentProductFeatures, setCurrentProductFeatures] = useState(null);
   const [allFeatures, setAllFeatures] = useState(null);
   const [currentProductName, setCurrentProductName] = useState(null);
-
-  console.log(defaultProduct.features);
   const defaultProductFeatures = defaultProduct.features;
   const defaultProductName = defaultProduct.name;
 
@@ -46,7 +44,6 @@ function ComparisonForm({ defaultProduct }) {
         });
       }
     });
-
     setAllFeatures(combinedFeatures);
   };
 
