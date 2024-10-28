@@ -1,13 +1,9 @@
 import React, { useContext } from 'react';
-
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import ImageThumbnails from './ImageThumbnails';
 import ExpandedView from './ExpandedView';
-
 import AppContext from '../context/AppContext';
-
 import ImageGalleryButton from './ImageGalleryButton';
-
 import missing from '../images/missing.svg?url';
 
 function ImageGallery() {
