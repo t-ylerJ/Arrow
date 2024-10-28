@@ -6,19 +6,15 @@ import AppContext from '../context/AppContext';
 function AddQuestion() {
   const [error, setError] = useState(null);
   const [attempted, setAttempted] = useState(false);
-  const {
-    store: { product }, productID, hideModal, updateQnA,
-  } = useContext(AppContext);
-
+  const { store: { product }, productID, hideModal, updateQnA, 
+        } = useContext(AppContext);
   const formRef = useRef();
   
   const handleSubmit = async (e) => {
     e.preventDefault();
     setAttempted(true);
- 
     const data = Object.fromEntries(new FormData(e.target.form));
     data.product_id = parseInt(data.product_id);
-    
     const response = await axios.post('/qa/questions', data);
     if (response.status === 201) {
       updateQnA();
